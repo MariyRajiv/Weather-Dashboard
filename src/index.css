@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cloud Animation */
+@keyframes float {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 20s linear infinite;
+}
+
+.cloud:nth-child(2) {
+  top: 20%;
+  animation-delay: -5s;
+  animation-duration: 25s;
+}
+
+.cloud:nth-child(3) {
+  top: 40%;
+  animation-delay: -10s;
+  animation-duration: 30s;
+}
+
+/* Snowfall Animation */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+  }
+}
+
+.snowflake {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+/* Individual snowflakes with different positions and animations */
+.snowflake:nth-child(1) { left: 10%; animation: snowfall 8s linear infinite; }
+.snowflake:nth-child(2) { left: 20%; animation: snowfall 6s linear infinite 1s; }
+.snowflake:nth-child(3) { left: 30%; animation: snowfall 7s linear infinite 2s; }
+.snowflake:nth-child(4) { left: 40%; animation: snowfall 9s linear infinite 0.5s; }
+.snowflake:nth-child(5) { left: 50%; animation: snowfall 8s linear infinite 1.5s; }
+.snowflake:nth-child(6) { left: 60%; animation: snowfall 7s linear infinite 2.5s; }
+.snowflake:nth-child(7) { left: 70%; animation: snowfall 9s linear infinite 1s; }
+.snowflake:nth-child(8) { left: 80%; animation: snowfall 6s linear infinite 2s; }
+.snowflake:nth-child(9) { left: 90%; animation: snowfall 8s linear infinite 1.5s; }
+.snowflake:nth-child(10) { left: 25%; animation: snowfall 7s linear infinite 0.5s; }
+.snowflake:nth-child(11) { left: 35%; animation: snowfall 9s linear infinite 1.5s; }
+.snowflake:nth-child(12) { left: 45%; animation: snowfall 8s linear infinite 2.5s; }
+.snowflake:nth-child(13) { left: 55%; animation: snowfall 7s linear infinite 1s; }
+.snowflake:nth-child(14) { left: 65%; animation: snowfall 9s linear infinite 2s; }
+.snowflake:nth-child(15) { left: 75%; animation: snowfall 6s linear infinite 0.5s; }
+
+/* Sun rays animation */
+@keyframes rays {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sun-rays {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,220,110,0.8) 0%, rgba(255,220,110,0) 70%);
+  animation: rays 20s linear infinite;
+}
+
+/* Temperature backgrounds with transitions */
+.temperature-bg {
+  transition: all 1s ease-in-out;
+}
+
+.temperature-bg.cold {
+  background-color: rgba(59, 130, 246, 0.7);
+}
+
+.temperature-bg.cold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+}
+
+.temperature-bg.moderate {
+  background-color: rgba(52, 211, 153, 0.7);
+}
+
+.temperature-bg.moderate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.2) 10%,
+    rgba(255,255,255,0.1) 20%
+  );
+  animation: humidity 15s linear infinite;
+}
+
+.temperature-bg.hot {
+  background-color: rgba(239, 68, 68, 0.7);
+}
+
+.temperature-bg.hot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255,220,110,0.4) 0%, rgba(255,220,110,0) 70%);
+}
+
+@keyframes humidity {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
